@@ -1,4 +1,4 @@
-var cassandra = require('cassandra-driver');
+var cassandra = require('@frank4up/cassandra-driver');
 var fs = require('fs');
 module.exports = {
   contactPoints: ['127.0.0.1'],

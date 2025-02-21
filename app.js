@@ -76,8 +76,7 @@ program
         let Up = require('./commands/up');
         let up = new Up(db, migrationLists, dir);
         if (!options.skip) {
-          console.log('processing migration lists');
-          console.log(migrationLists);
+          console.log('processing un-skipped migration lists', migrationLists);
         }
         up.runPending(options.skip)
           .then(result => {
@@ -103,7 +102,7 @@ program
   .action((options) => {
     let db = new DB(program);
     let common = new Common(fs, db);
-    const dir = getDir(program);
+    const dir = Helpers.getDir(options);
     common.createMigrationTable()
       .then(common.getMigrationFiles(dir))
       .then(() => common.getMigrations())
@@ -111,9 +110,9 @@ program
       .then((migrationLists) => {
         console.log('processing migration lists');
         let Down = require('./commands/down');
-        let down = new Down(db, migrationLists);
+        let down = new Down(db, migrationLists, dir);
         if (!options.skip) {
-          console.log('processing migration lists');
+          console.log('processing un-skipped migration lists');
           console.log(migrationLists);
         }
         down.runPending(options.skip)

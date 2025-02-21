@@ -1,6 +1,6 @@
 'use strict';
 
-var cassandra = require('cassandra-driver');
+var cassandra = require('@frank4up/cassandra-driver');
 
 class Database {
   constructor(settings) {

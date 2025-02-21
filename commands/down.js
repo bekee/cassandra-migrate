@@ -8,6 +8,8 @@ class down {
     this.db = db;
     this.pending = pendingMigrations;
     this.dir = dir;
+    console.log('dir', dir)
+    console.log('pendingMigrations', pendingMigrations)
     this.keyList = Object.keys(pendingMigrations).sort(function (a, b) {
       return b - a;
     });
